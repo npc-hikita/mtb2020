@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start",
+      "problemMatcher": [],
+      "dependsOn": ["Frontend", "Backend"]
+    },
+    {
+      "label": "Frontend",
+      "type": "npm",
+      "script": "start",
+      "path": "frontend/",
+      "problemMatcher": [],
+      "presentation": {
+        "group": "groupA"
+      }
+    },
+    {
+      "label": "Backend",
+      "type": "shell",
+      "command": "python main.py",
+      "problemMatcher": [],
+      "presentation": {
+        "group": "groupA"
+      }
+    }
+  ]
+}

@@ -18,8 +18,13 @@
     "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
     "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
   },
-  "extensions": ["ms-python.python", "yzhang.markdown-all-in-one", "esbenp.prettier-vscode"],
-  "forwardPorts": [3000, 8000],
+  "extensions": [
+    "ms-python.python",
+    "yzhang.markdown-all-in-one",
+    "esbenp.prettier-vscode"
+  ],
+  "remoteUser": "vscode",
   "postCreateCommand": "./setup.sh",
-  "remoteUser": "vscode"
+  "postStartCommand": "echo postStartCommand",
+  "postAttachCommand": "echo postAttachCommand"
 }

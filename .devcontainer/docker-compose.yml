@@ -10,7 +10,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ../webapp:/opt/webapp:cached
+      - ../:/opt/:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
   db:
     container_name: "mtb_db"
