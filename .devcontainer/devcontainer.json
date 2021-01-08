@@ -2,7 +2,7 @@
   "name": "mtb2020",
   "dockerComposeFile": ["docker-compose.yml"],
   "service": "web",
-  "workspaceFolder": "/opt/webapp",
+  "workspaceFolder": "/opt/mtb2020",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "python.pythonPath": "/usr/local/bin/python",
@@ -24,7 +24,5 @@
     "esbenp.prettier-vscode"
   ],
   "remoteUser": "vscode",
-  "postCreateCommand": "./setup.sh",
-  "postStartCommand": "echo postStartCommand",
-  "postAttachCommand": "echo postAttachCommand"
+  "postCreateCommand": "/bin/bash ./webapp/setup.sh"
 }

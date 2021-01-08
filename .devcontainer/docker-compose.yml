@@ -6,11 +6,10 @@ services:
     ports:
       - "3000:3000"
       - "8000:8000"
-    # env_file: .env
     depends_on:
       - db
     volumes:
-      - ../:/opt/:cached
+      - ../:/opt/mtb2020:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
   db:
     container_name: "mtb2020_db"
