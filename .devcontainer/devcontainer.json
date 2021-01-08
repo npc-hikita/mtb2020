@@ -1,5 +1,5 @@
 {
-  "name": "MTB",
+  "name": "mtb2020",
   "dockerComposeFile": ["docker-compose.yml"],
   "service": "web",
   "workspaceFolder": "/opt/webapp",

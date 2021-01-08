@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   web:
-    container_name: "mtb_web"
+    container_name: "mtb2020_web"
     build: ../webapp
     ports:
       - "3000:3000"
@@ -13,7 +13,7 @@ services:
       - ../:/opt/:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
   db:
-    container_name: "mtb_db"
+    container_name: "mtb2020_db"
     image: postgres:latest
     ports:
       - "5432:5432"
