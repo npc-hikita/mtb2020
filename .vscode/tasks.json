@@ -10,7 +10,7 @@
       "label": "Frontend",
       "type": "npm",
       "script": "start",
-      "path": "webapp/frontend/",
+      "path": "frontend/",
       "problemMatcher": [],
       "presentation": {
         "group": "groupA"
@@ -19,7 +19,7 @@
     {
       "label": "Backend",
       "type": "shell",
-      "command": "python ./webapp/main.py",
+      "command": "python ./backend/main.py",
       "problemMatcher": [],
       "presentation": {
         "group": "groupA"

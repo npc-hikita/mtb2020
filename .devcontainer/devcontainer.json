@@ -25,5 +25,5 @@
     "esbenp.prettier-vscode"
   ],
   "remoteUser": "vscode",
-  "postCreateCommand": "/bin/bash ./webapp/setup.sh"
+  "postCreateCommand": "/bin/bash ./setup.sh"
 }
