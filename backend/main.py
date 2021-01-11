@@ -2,8 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-from starlette.responses import RedirectResponse, FileResponse, HTMLResponse
-from starlette.exceptions import HTTPException
+from starlette.responses import FileResponse
+import os
 
 app = FastAPI()
 
@@ -33,6 +33,7 @@ async def register_user(user: User):
     return {"text": "created"}
 
 
+os.makedirs("static", exist_ok=True)
 app.mount("/static", StaticFiles(directory="static", html=True), name="static")
 
 
