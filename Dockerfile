@@ -11,9 +11,10 @@ COPY . .
 # フロントエンドのセットアップ
 WORKDIR /mtb/frontend
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install lts/* 2>&1"
-RUN cd ~ && curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && sudo bash nodesource_setup.sh && sudo apt install nodejs && node -v
+RUN cd ~ && curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && sudo bash nodesource_setup.sh && sudo apt install nodejs
 RUN yarn install
 RUN yarn build
+RUN mkdir ../backend/static/
 RUN mv build/* ../backend/static/
 
 # バックエンドのセットアップ
