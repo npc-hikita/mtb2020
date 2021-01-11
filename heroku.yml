@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: cd /mtb2020/backend && python main.py
+  web: /bin/bash -c "cd /mtb2020/backend && python main.py"
