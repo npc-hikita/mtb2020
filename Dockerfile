@@ -5,11 +5,11 @@
 # ベースとなるコンテナイメージを指定（今回はPython 3.9）
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-3.9
 
-WORKDIR /mtb
+WORKDIR /mtb2020
 COPY . .
 
 # ★フロントエンドのセットアップ
-WORKDIR /mtb/frontend
+WORKDIR /mtb2020/frontend
 # Node.jsをインストール
 RUN cd ~ && curl -sL https://deb.nodesource.com/setup_14.x -o nodesource_setup.sh && sudo bash nodesource_setup.sh && sudo apt install nodejs
 # 依存ライブラリをインストール
@@ -21,7 +21,7 @@ RUN mkdir ../backend/static/
 RUN mv build/* ../backend/static/
 
 # ★バックエンドのセットアップ
-WORKDIR /mtb/backend
+WORKDIR /mtb2020/backend
 # 依存ライブラリをインストール
 RUN pip3 install --user -r requirements.txt
 
