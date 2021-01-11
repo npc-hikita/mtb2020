@@ -11,8 +11,7 @@ COPY . .
 # フロントエンドのセットアップ
 WORKDIR /mtb/frontend
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install lts/* 2>&1"
-RUN su vscode -c "source /usr/local/share/nvm/nvm.sh"
-RUN su vscode -c "nvm install lts/* 2>&1"
+RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install lts/*"
 RUN yarn install
 RUN yarn build
 RUN mv build/* ../backend/static/
