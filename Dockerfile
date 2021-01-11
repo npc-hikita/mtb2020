@@ -23,7 +23,7 @@ RUN mv build/* ../backend/static/
 # ★バックエンドのセットアップ
 WORKDIR /mtb2020/backend
 # 依存ライブラリをインストール
-RUN pip3 install --user -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 # コンテナ起動時に実行するコマンドを指定
 CMD [ "python", "main.py" ]
