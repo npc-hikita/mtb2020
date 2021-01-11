@@ -1,6 +1,9 @@
 import uvicorn
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
+from starlette.responses import RedirectResponse, FileResponse, HTMLResponse
+from starlette.exceptions import HTTPException
 
 app = FastAPI()
 
@@ -14,6 +17,11 @@ class User(BaseModel):
 users = [User(**{"name": "John", "dept": "営業課"})]
 
 
+@app.exception_handler(404)
+async def not_found(request, ex):
+    return FileResponse(path="static/index.html", media_type="text/html")
+
+
 @app.get('/api/users')
 async def get_users():
     return {"users": users}
@@ -23,6 +31,10 @@ async def get_users():
 async def register_user(user: User):
     users.append(User(**{"name": user.name, "dept": user.dept}))
     return {"text": "created"}
+
+
+app.mount("/static", StaticFiles(directory="static", html=True), name="static")
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
