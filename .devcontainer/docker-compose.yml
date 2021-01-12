@@ -1,5 +1,6 @@
 version: "3.9"
 services:
+  # アプリコンテナの設定
   web:
     # コンテナ名
     container_name: "mtb2020_web"
@@ -17,3 +18,4 @@ services:
       - ../:/opt/mtb2020:cached
     # コンテナ起動時に実行されるコマンド
     command: /bin/sh -c "while sleep 1000; do :; done"
+    
