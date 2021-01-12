@@ -38,5 +38,5 @@ app.mount("/static", StaticFiles(directory="static", html=True), name="static")
 
 
 if __name__ == "__main__":
-    print("PORT is " + os.environ["PORT"])
-    uvicorn.run(app, host="0.0.0.0", port=os.environ["PORT"])
+    port = int(os.environ["PORT"])
+    uvicorn.run(app, host="0.0.0.0", port=port)
