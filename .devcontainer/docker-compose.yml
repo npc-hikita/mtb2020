@@ -1,13 +1,31 @@
 version: "3.9"
 services:
+  # アプリコンテナの設定
   web:
+    # コンテナ名
     container_name: "mtb2020_web"
+    # 気にしないでOK
     build: .
+    # 解放するポート
     ports:
       - "3000:3000"
       - "8000:8000"
+    # 環境変数
     environment:
       PORT: 8000
+    # ★追加: コンテナ間の依存関係設定
+    depends_on:
+      - db
+    # ホストマシンとのファイル共有設定
     volumes:
       - ../:/opt/mtb2020:cached
+    # コンテナ起動時に実行されるコマンド
     command: /bin/sh -c "while sleep 1000; do :; done"
+  # ★追加: DBコンテナの設定
+  db:
+    container_name: "mtb2020_db"
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "passmtb2020"
