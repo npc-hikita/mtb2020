@@ -8,8 +8,6 @@ services:
       - "8000:8000"
     environment:
       PORT: 8000
-    depends_on:
-      - db
     volumes:
       - ../:/opt/mtb2020:cached
     command: /bin/sh -c "while sleep 1000; do :; done"
