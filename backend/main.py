@@ -1,20 +1,25 @@
 import uvicorn
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel
 from starlette.responses import FileResponse
+from sqlalchemy.orm import Session
 import os
+
+from models import Base, User as DbUser
+from schemas import User as SchemaUser
+from database import SessionLocal, engine
+
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
 
-class User(BaseModel):
-    name: str
-    dept: str
-
-
-# デフォルトで1件データを登録しておく
-users = [User(**{"name": "John", "dept": "営業課"})]
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 @app.exception_handler(404)
@@ -23,13 +28,17 @@ async def not_found(request, ex):
 
 
 @app.get('/api/users')
-async def get_users():
+async def get_users(db: Session = Depends(get_db)):
+    users = db.query(DbUser).all()
     return {"users": users}
 
 
 @app.post('/api/users')
-async def register_user(user: User):
-    users.append(User(**{"name": user.name, "dept": user.dept}))
+async def register_user(user: SchemaUser, db: Session = Depends(get_db)):
+    db_user = DbUser(name=user.name, dept=user.dept)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
     return {"text": "created"}
 
 

@@ -19,4 +19,4 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_PASSWORD: "npcnpc"
+      POSTGRES_PASSWORD: "passmtb2020"

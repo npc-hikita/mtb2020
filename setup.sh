@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 # バックエンド（Python）の依存ライブラリをインストール
 cd ./backend
