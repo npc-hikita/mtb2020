@@ -1,13 +1,19 @@
 version: "3.9"
 services:
   web:
-    container_name: "mtb2020_web" # コンテナ名
+    # コンテナ名
+    container_name: "mtb2020_web"
+    # 気にしないでOK
     build: .
-    ports: # 解放するポート
+    # 解放するポート
+    ports:
       - "3000:3000"
       - "8000:8000"
-    environment: # 環境変数
+    # 環境変数
+    environment:
       PORT: 8000
-    volumes: # ホストマシンとのファイル共有設定
+    # ホストマシンとのファイル共有設定
+    volumes:
       - ../:/opt/mtb2020:cached
-    command: /bin/sh -c "while sleep 1000; do :; done" # コンテナ起動時に実行されるコマンド
+    # コンテナ起動時に実行されるコマンド
+    command: /bin/sh -c "while sleep 1000; do :; done"
