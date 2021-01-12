@@ -34,7 +34,6 @@ async def register_user(user: User):
     return {"text": "created"}
 
 
-os.makedirs("static", exist_ok=True)
 app.mount("/static", StaticFiles(directory="static", html=True), name="static")
 
 
